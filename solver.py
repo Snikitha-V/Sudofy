@@ -1,16 +1,7 @@
-#!/usr/bin/env python3
-"""
-solver.py  –  streaming DFS back-tracking Sudoku engine
-Run:  python solver.py
-"""
-
 from typing import List, Tuple, Generator, Optional
 
 Board = List[List[int]]          # 0 == empty cell
 
-# ------------------------------------------------------------------
-# 1.  hard-coded puzzle  (change here for quick tests)
-# ------------------------------------------------------------------
 PUZZLE = [
     [5, 1, 7, 6, 0, 0, 0, 3, 4],
     [2, 8, 9, 0, 0, 4, 0, 0, 0],
@@ -23,9 +14,6 @@ PUZZLE = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0]
 ]
 
-# ------------------------------------------------------------------
-# 2.  helper functions
-# ------------------------------------------------------------------
 def next_empty(board: Board) -> Optional[Tuple[int, int]]:
     """Return first empty cell (row, col) or None."""
     for i in range(9):
@@ -45,9 +33,6 @@ def legal(board: Board, r: int, c: int, val: int) -> bool:
         return False
     return True
 
-# ------------------------------------------------------------------
-# 3.  streaming DFS solver  (generator)
-# ------------------------------------------------------------------
 def solve_stream(board: Board) -> Generator[Board, None, bool]:
     """
     Depth-first back-tracking solver that YIELDS a *copy* of the board
@@ -70,9 +55,6 @@ def solve_stream(board: Board) -> Generator[Board, None, bool]:
             yield [row[:] for row in board]          # removed (back-track)
     return False
 
-# ------------------------------------------------------------------
-# 4.  quick demo  (runs only when executed directly)
-# ------------------------------------------------------------------
 if __name__ == "__main__":
     import pprint, time, sys
 
