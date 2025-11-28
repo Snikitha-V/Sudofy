@@ -1,4 +1,6 @@
+print("=== NEW solver.py LOADED ===")
 from typing import List, Tuple, Generator, Optional
+import time
 
 Board = List[List[int]]          # 0 == empty cell
 
@@ -13,6 +15,7 @@ PUZZLE = [
     [7, 0, 3, 4, 0, 0, 5, 6, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0]
 ]
+
 
 def next_empty(board: Board) -> Optional[Tuple[int, int]]:
     """Return first empty cell (row, col) or None."""
@@ -33,14 +36,12 @@ def legal(board: Board, r: int, c: int, val: int) -> bool:
         return False
     return True
 
-def solve_stream(board: Board) -> Generator[Board, None, bool]:
+def solve_stream(board: Board, delay: float = 0.03) -> Generator[Board, None, bool]:
     """
-    Depth-first back-tracking solver that YIELDS a *copy* of the board
-    every time a digit is placed or removed.  Final yield is the solved
-    board; function returns True when solved, False if unsolvable.
+    delay = seconds between frames (0.05 ≈ 50 ms)
     """
     empty = next_empty(board)
-    if empty is None:               # solved
+    if empty is None:
         yield [row[:] for row in board]
         return True
 
@@ -48,11 +49,13 @@ def solve_stream(board: Board) -> Generator[Board, None, bool]:
     for val in range(1, 10):
         if legal(board, r, c, val):
             board[r][c] = val
-            yield [row[:] for row in board]          # placed
-            if (yield from solve_stream(board)):
+            yield [row[:] for row in board]
+            print(f"frame → sleeping {delay}s")
+            time.sleep(delay)                       
+            if (yield from solve_stream(board, delay)):
                 return True
             board[r][c] = 0
-            yield [row[:] for row in board]          # removed (back-track)
+            yield [row[:] for row in board]         # no sleep on erase
     return False
 
 if __name__ == "__main__":

@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Sudofy – live solver</title>
+  <style>
+    body { font-family: system-ui, sans-serif; display: grid; place-content: center; min-height: 100vh; background: #111; color: #0f0; }
+    table { border-collapse: collapse; font-size: 2rem; }
+    td { width: 48px; height: 48px; text-align: center; border: 1px solid #444; }
+    tr:nth-child(3n) td { border-bottom: 3px solid #0f0; }
+    td:nth-child(3n) { border-right: 3px solid #0f0; }
+  </style>
+</head>
+<body>
+  <table id="grid"></table>
+
+  <script>
+    const SIZE = 9;
+    const table = document.getElementById('grid');
+
+    // create empty grid
+    for (let r = 0; r < SIZE; r++) {
+      const tr = table.insertRow();
+      for (let c = 0; c < SIZE; c++) tr.insertCell();
+    }
+
+    const ws = new WebSocket('ws://localhost:8000/solve');
+    ws.onopen = () => {
+      // send the same puzzle you tested earlier
+      ws.send(JSON.stringify({ grid: [
+        [5,1,7,6,0,0,0,3,4],
+        [2,8,9,0,0,4,0,0,0],
+        [3,4,6,2,0,5,0,9,0],
+        [6,0,2,0,0,0,0,1,0],
+        [0,3,8,0,0,6,0,4,7],
+        [0,0,0,0,0,0,0,0,0],
+        [0,9,0,0,0,0,0,7,8],
+        [7,0,3,4,0,0,5,6,0],
+        [0,0,0,0,0,0,0,0,0]
+      ]}));
+    };
+
+    ws.onmessage = msg => {
+      const pkt = JSON.parse(msg.data);
+      if (pkt.status === 'done') { ws.close(); return; }
+      const b = pkt.board;
+      for (let r = 0; r < SIZE; r++) {
+        for (let c = 0; c < SIZE; c++) {
+          table.rows[r].cells[c].textContent = b[r][c] || '';
+        }
+      }
+    };
+  </script>
+</body>
+</html>
