@@ -1,8 +1,17 @@
-from typing import List,Tuple ,Generator, Optional
-Board=List[List[int]]
+#!/usr/bin/env python3
+"""
+solver.py  –  streaming DFS back-tracking Sudoku engine
+Run:  python solver.py
+"""
 
-## Hardcoded Sudoku Puzzle
-Puzzle= [
+from typing import List, Tuple, Generator, Optional
+
+Board = List[List[int]]          # 0 == empty cell
+
+# ------------------------------------------------------------------
+# 1.  hard-coded puzzle  (change here for quick tests)
+# ------------------------------------------------------------------
+PUZZLE = [
     [5, 1, 7, 6, 0, 0, 0, 3, 4],
     [2, 8, 9, 0, 0, 4, 0, 0, 0],
     [3, 4, 6, 2, 0, 5, 0, 9, 0],
@@ -14,6 +23,9 @@ Puzzle= [
     [0, 0, 0, 0, 0, 0, 0, 0, 0]
 ]
 
+# ------------------------------------------------------------------
+# 2.  helper functions
+# ------------------------------------------------------------------
 def next_empty(board: Board) -> Optional[Tuple[int, int]]:
     """Return first empty cell (row, col) or None."""
     for i in range(9):
@@ -33,6 +45,9 @@ def legal(board: Board, r: int, c: int, val: int) -> bool:
         return False
     return True
 
+# ------------------------------------------------------------------
+# 3.  streaming DFS solver  (generator)
+# ------------------------------------------------------------------
 def solve_stream(board: Board) -> Generator[Board, None, bool]:
     """
     Depth-first back-tracking solver that YIELDS a *copy* of the board
@@ -40,7 +55,7 @@ def solve_stream(board: Board) -> Generator[Board, None, bool]:
     board; function returns True when solved, False if unsolvable.
     """
     empty = next_empty(board)
-    if empty is None:                               # solved
+    if empty is None:               # solved
         yield [row[:] for row in board]
         return True
 
@@ -48,17 +63,20 @@ def solve_stream(board: Board) -> Generator[Board, None, bool]:
     for val in range(1, 10):
         if legal(board, r, c, val):
             board[r][c] = val
-            yield [row[:] for row in board]         # placed
+            yield [row[:] for row in board]          # placed
             if (yield from solve_stream(board)):
                 return True
             board[r][c] = 0
-            yield [row[:] for row in board]         # removed (back-track)
+            yield [row[:] for row in board]          # removed (back-track)
     return False
 
+# ------------------------------------------------------------------
+# 4.  quick demo  (runs only when executed directly)
+# ------------------------------------------------------------------
 if __name__ == "__main__":
     import pprint, time, sys
 
-    board = [row[:] for row in Puzzle]   # work on a copy
+    board = [row[:] for row in PUZZLE]   # work on a copy
     print("Original puzzle:")
     pprint.pp(board)
 
