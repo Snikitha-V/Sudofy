@@ -36,9 +36,9 @@ def legal(board: Board, r: int, c: int, val: int) -> bool:
         return False
     return True
 
-def solve_stream(board: Board, delay: float = 0.03) -> Generator[Board, None, bool]:
+def solve_stream(board: Board, delay: float = 0.01) -> Generator[Board, None, bool]:
     """
-    delay = seconds between frames (0.05 ≈ 50 ms)
+    delay = seconds between frames (0.01 ≈ 10 ms for smoother animation)
     """
     empty = next_empty(board)
     if empty is None:
@@ -50,12 +50,11 @@ def solve_stream(board: Board, delay: float = 0.03) -> Generator[Board, None, bo
         if legal(board, r, c, val):
             board[r][c] = val
             yield [row[:] for row in board]
-            print(f"frame → sleeping {delay}s")
             time.sleep(delay)                       
             if (yield from solve_stream(board, delay)):
                 return True
             board[r][c] = 0
-            yield [row[:] for row in board]         # no sleep on erase
+            # Skip yielding backtrack frames for smoother animation
     return False
 
 if __name__ == "__main__":
