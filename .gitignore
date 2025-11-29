@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+sudoko_solver/
+
+# Node
+node_modules/
+.next/
+.turbo/
+
+# IDE
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
