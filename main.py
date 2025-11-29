@@ -1,10 +1,11 @@
-from fastapi import FastAPI, WebSocket
+from fastapi import FastAPI, WebSocket, UploadFile, File
 from fastapi.staticfiles import StaticFiles   
 from fastapi.responses import FileResponse
 import json
 from solver import solve_stream, Board   # our engine
 
 app = FastAPI(title="Sudofy solver API")
+
 
 @app.get("/")
 async def home():
