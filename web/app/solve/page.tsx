@@ -50,7 +50,8 @@ export default function SolvePage() {
     const payload = grid.map((row) => row.map((cell) => cell.value))
     originalMaskRef.current = grid.map((row) => row.map((cell) => cell.value !== 0))
 
-    const socket = new WebSocket("ws://localhost:8000/solve")
+    // Use production backend URL
+    const socket = new WebSocket("wss://sudofy-backend.onrender.com/solve")
     wsRef.current = socket
     setSolving(true)
     setError(null)
