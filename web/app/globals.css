@@ -6,35 +6,35 @@
 :root {
   /* cyberpunk neon theme with dark backgrounds */
   --background: #0a0e27;
-  --foreground: #0f0;
+  --foreground: #389bf2;
   --card: #111d3d;
-  --card-foreground: #0f0;
+  --card-foreground: #389bf2;
   --popover: #0a0e27;
-  --popover-foreground: #0f0;
+  --popover-foreground: #389bf2;
   --primary: #8b076c;
-  --primary-foreground: #0f0;
+  --primary-foreground: #389bf2;
   --secondary: #1a3a52;
-  --secondary-foreground: #0f0;
+  --secondary-foreground: #389bf2;
   --muted: #1a1f3a;
-  --muted-foreground: #00ff00;
-  --accent: #00ff00;
+  --muted-foreground: #389bf2;
+  --accent: #389bf2;
   --accent-foreground: #0a0e27;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
   --border: #1a3a52;
   --input: #111d3d;
   --ring: #8b076c;
-  --chart-1: #00ff00;
-  --chart-2: #0f0;
-  --chart-3: #00ff00;
+  --chart-1: #389bf2;
+  --chart-2: #389bf2;
+  --chart-3: #389bf2;
   --chart-4: #8b076c;
-  --chart-5: #00ff00;
+  --chart-5: #389bf2;
   --radius: 0.625rem;
   --sidebar: #0a0e27;
-  --sidebar-foreground: #0f0;
+  --sidebar-foreground: #389bf2;
   --sidebar-primary: #8b076c;
-  --sidebar-primary-foreground: #0f0;
-  --sidebar-accent: #00ff00;
+  --sidebar-primary-foreground: #389bf2;
+  --sidebar-accent: #389bf2;
   --sidebar-accent-foreground: #0a0e27;
   --sidebar-border: #1a3a52;
   --sidebar-ring: #8b076c;
@@ -42,42 +42,42 @@
 
 .dark {
   --background: #0a0e27;
-  --foreground: #0f0;
+  --foreground: #389bf2;
   --card: #111d3d;
-  --card-foreground: #0f0;
+  --card-foreground: #389bf2;
   --popover: #0a0e27;
-  --popover-foreground: #0f0;
+  --popover-foreground: #389bf2;
   --primary: #8b076c;
-  --primary-foreground: #0f0;
+  --primary-foreground: #389bf2;
   --secondary: #1a3a52;
-  --secondary-foreground: #0f0;
+  --secondary-foreground: #389bf2;
   --muted: #1a1f3a;
-  --muted-foreground: #00ff00;
-  --accent: #00ff00;
+  --muted-foreground: #389bf2;
+  --accent: #389bf2;
   --accent-foreground: #0a0e27;
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
   --border: #1a3a52;
   --input: #111d3d;
   --ring: #8b076c;
-  --chart-1: #00ff00;
-  --chart-2: #0f0;
-  --chart-3: #00ff00;
+  --chart-1: #389bf2;
+  --chart-2: #389bf2;
+  --chart-3: #389bf2;
   --chart-4: #8b076c;
-  --chart-5: #00ff00;
+  --chart-5: #389bf2;
   --sidebar: #0a0e27;
-  --sidebar-foreground: #0f0;
+  --sidebar-foreground: #389bf2;
   --sidebar-primary: #8b076c;
-  --sidebar-primary-foreground: #0f0;
-  --sidebar-accent: #00ff00;
+  --sidebar-primary-foreground: #389bf2;
+  --sidebar-accent: #389bf2;
   --sidebar-accent-foreground: #0a0e27;
   --sidebar-border: #1a3a52;
   --sidebar-ring: #8b076c;
 }
 
 @theme inline {
-  --font-sans: "Geist", "Geist Fallback";
-  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --font-sans: "Roboto", "Roboto Fallback", sans-serif;
+  --font-mono: "Roboto Mono", "Roboto Mono Fallback", monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -129,17 +129,17 @@
 .ui-btn {
   --btn-default-bg: rgb(17, 29, 61);
   --btn-padding: 15px 20px;
-  --btn-hover-bg: rgb(139, 7, 108);
+  --btn-hover-bg: rgb(247, 242, 148);
   --btn-transition: .3s;
   --btn-letter-spacing: .1rem;
   --btn-animation-duration: 1.2s;
-  --btn-shadow-color: rgba(0, 255, 0, 0.3);
+  --btn-shadow-color: rgba(56, 155, 242, 0.3);
   --btn-shadow: 0 0 20px var(--btn-shadow-color);
-  --hover-btn-color: #0f0;
-  --default-btn-color: #0f0;
+  --hover-btn-color: #0a0e27;
+  --default-btn-color: #389bf2;
   --font-size: 16px;
   --font-weight: 600;
-  --font-family: Menlo, Roboto Mono, monospace;
+  --font-family: "Roboto Mono", "Roboto", monospace;
 }
 
 .ui-btn {
@@ -151,7 +151,7 @@
   color: var(--default-btn-color);
   font: var(--font-weight) var(--font-size) var(--font-family);
   background: var(--btn-default-bg);
-  border: 2px solid #00ff00;
+  border: 2px solid #389bf2;
   cursor: pointer;
   transition: var(--btn-transition);
   overflow: hidden;
@@ -176,7 +176,7 @@
 .ui-btn:hover,
 .ui-btn:focus {
   background: var(--btn-hover-bg);
-  box-shadow: 0 0 40px rgba(0, 255, 0, 0.6);
+  box-shadow: 0 0 40px rgba(56, 155, 242, 0.6);
 }
 
 .ui-btn:hover span,
@@ -266,23 +266,33 @@
 
 /* added neon glow effects for sudoku grid */
 .sudoku-grid {
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3), inset 0 0 20px rgba(139, 7, 108, 0.1);
+  box-shadow: 0 0 20px rgba(56, 155, 242, 0.3), inset 0 0 20px rgba(247, 242, 148, 0.1);
+  border-collapse: collapse;
 }
 
 .sudoku-cell {
-  border-color: rgba(0, 255, 0, 0.3);
+  border: 1px solid rgba(56, 155, 242, 0.3);
   transition: all 0.2s ease;
 }
 
+/* Bold borders for 3x3 box divisions */
+.sudoku-cell.border-right-bold {
+  border-right: 3px solid #389bf2 !important;
+}
+
+.sudoku-cell.border-bottom-bold {
+  border-bottom: 3px solid #389bf2 !important;
+}
+
 .sudoku-cell:focus-within {
-  background: rgba(139, 7, 108, 0.2);
-  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-  border-color: #0f0;
+  background: rgba(247, 242, 148, 0.2);
+  box-shadow: 0 0 10px rgba(56, 155, 242, 0.5);
+  border-color: #389bf2;
 }
 
 .sudoku-cell input:focus {
-  background: rgba(139, 7, 108, 0.15);
-  color: #0f0;
+  background: rgba(247, 242, 148, 0.15);
+  color: #389bf2;
 }
 
 /* pill nav styling */
@@ -294,28 +304,29 @@
   padding: 1rem;
   background: rgba(10, 14, 39, 0.8);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 255, 0, 0.2);
+  border-bottom: 1px solid rgba(56, 155, 242, 0.2);
 }
 
 .pill-nav-item {
   padding: 0.5rem 1.5rem;
   border-radius: 2rem;
   background: transparent;
-  color: #0f0;
+  color: #389bf2;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: Menlo, Roboto Mono, monospace;
+  font-family: "Roboto Mono", "Roboto", monospace;
+  opacity: 1;
 }
 
 .pill-nav-item:hover {
-  background: rgba(139, 7, 108, 0.3);
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
+  background: rgba(247, 242, 148, 0.3);
+  box-shadow: 0 0 15px rgba(56, 155, 242, 0.4);
 }
 
 .pill-nav-item.active {
-  background: rgba(139, 7, 108, 0.6);
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+  background: rgba(247, 242, 148, 0.6);
+  box-shadow: 0 0 20px rgba(56, 155, 242, 0.6);
 }
 
 .github-link {
@@ -323,12 +334,12 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  color: #0f0;
+  color: #389bf2;
   text-decoration: none;
   transition: all 0.3s ease;
-  font-family: Menlo, Roboto Mono, monospace;
+  font-family: "Roboto Mono", "Roboto", monospace;
 }
 
 .github-link:hover {
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
+  box-shadow: 0 0 15px rgba(56, 155, 242, 0.4);
 }

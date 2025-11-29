@@ -21,7 +21,7 @@ export default function Home() {
             <h1
               className="text-6xl font-bold mb-4 font-mono text-accent drop-shadow-lg"
               style={{
-                textShadow: "0 0 30px rgba(0, 255, 0, 0.5)",
+                textShadow: "0 0 30px rgba(56, 155, 242, 0.5)",
               }}
             >
               SUDOFY
@@ -32,32 +32,15 @@ export default function Home() {
 
           {/* Description */}
           <div className="mb-12 space-y-4">
-            <p className="text-lg text-foreground/90 leading-relaxed">
-              The modern Sudoku solver built for speed and style. Type your puzzle, hit solve, and watch as it cracks
-              the code with cyberpunk aesthetics.
+            <p className="text-lg text-foreground/90 leading-relaxed font-mono">
+              Uses DFS with backtracking to explore possible solutions.
             </p>
-            <p className="text-sm text-muted-foreground">
-              Powered by advanced algorithm | Zero dependencies | Pure performance
+            <p className="text-lg text-foreground/90 leading-relaxed font-mono">
+              Backtracks when a dead end is reached, trying the next option.
             </p>
-          </div>
-
-          {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-            <div className="p-6 bg-card border border-border rounded-lg hover:border-accent transition">
-              <div className="text-3xl mb-2">⚡</div>
-              <h3 className="font-mono text-accent mb-2">Lightning Fast</h3>
-              <p className="text-sm text-foreground/70">Solves any Sudoku instantly</p>
-            </div>
-            <div className="p-6 bg-card border border-border rounded-lg hover:border-accent transition">
-              <div className="text-3xl mb-2">🎨</div>
-              <h3 className="font-mono text-accent mb-2">Cyberpunk Vibes</h3>
-              <p className="text-sm text-foreground/70">Neon-lit dark mode interface</p>
-            </div>
-            <div className="p-6 bg-card border border-border rounded-lg hover:border-accent transition">
-              <div className="text-3xl mb-2">🎯</div>
-              <h3 className="font-mono text-accent mb-2">Easy to Use</h3>
-              <p className="text-sm text-foreground/70">Simple input, powerful results</p>
-            </div>
+            <p className="text-lg text-foreground/90 leading-relaxed font-mono">
+              Guarantees a solution if one exists.
+            </p>
           </div>
 
           {/* CTA Button */}
@@ -75,7 +58,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-border/50 py-6 px-4">
         <div className="max-w-2xl mx-auto flex items-center justify-between text-sm text-muted-foreground">
-          <p className="font-mono">© 2025 Sudofy. Built with passion.</p>
+          <p className="font-mono">© 2025 Sudofy. FrenchFries</p>
           <a
             href="https://github.com/Snikitha-V/Sudofy"
             target="_blank"

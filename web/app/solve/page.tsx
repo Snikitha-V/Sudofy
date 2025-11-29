@@ -124,23 +124,23 @@ export default function SolvePage() {
           <h1
             className="text-4xl font-bold mb-8 font-mono text-accent text-center"
             style={{
-              textShadow: "0 0 20px rgba(0, 255, 0, 0.5)",
+              textShadow: "0 0 20px rgba(56, 155, 242, 0.5)",
             }}
           >
             SOLVER
           </h1>
 
           <div className="mb-8 flex justify-center">
-            <table className="sudoku-grid border-2 border-accent">
+            <table className="sudoku-grid border-4 border-accent">
               <tbody>
                 {grid.map((row, r) => (
-                  <tr key={r} className={r % 3 === 2 && r !== 8 ? "border-b-2 border-b-primary" : ""}>
+                  <tr key={r}>
                     {row.map((cell, c) => (
                       <td
                         key={`${r}-${c}`}
-                        className={`sudoku-cell w-16 h-16 border border-foreground/30 p-0 ${
-                          c % 3 === 2 && c !== 8 ? "border-r-2 border-r-primary" : ""
-                        } ${r % 3 === 2 && r !== 8 ? "border-b-2 border-b-primary" : ""}`}
+                        className={`sudoku-cell w-16 h-16 p-0 ${
+                          c === 2 || c === 5 ? "border-right-bold" : ""
+                        } ${r === 2 || r === 5 ? "border-bottom-bold" : ""}`}
                       >
                         <input
                           ref={(el) => {

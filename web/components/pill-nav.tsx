@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react"
 import Link from "next/link"
-import type { HTMLNavElement } from "react"
 
 interface NavItem {
   label: string
@@ -18,7 +17,7 @@ interface PillNavProps {
 }
 
 export default function PillNav({ logo, logoAlt, items, activeHref, className = "" }: PillNavProps) {
-  const navRef = useRef<HTMLNavElement>(null)
+  const navRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     // Import GSAP dynamically
@@ -26,14 +25,13 @@ export default function PillNav({ logo, logoAlt, items, activeHref, className = 
       import("gsap").then(({ default: gsap }) => {
         const navItems = navRef.current?.querySelectorAll(".pill-nav-item")
         if (navItems) {
-          gsap.from(navItems, {
-            opacity: 0,
-            y: -20,
-            stagger: 0.1,
-            duration: 0.6,
-            ease: "power2.easeOut",
-          })
+          gsap.fromTo(navItems, 
+            { opacity: 0, y: -20 },
+            { opacity: 1, y: 0, stagger: 0.1, duration: 0.6, ease: "power2.out" }
+          )
         }
+      }).catch(() => {
+        // If GSAP fails to load, items are already visible
       })
     }
   }, [])
